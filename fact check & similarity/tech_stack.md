@@ -73,7 +73,7 @@
 
 ---
 
-##️ Dataset Utilities
+## Dataset Utilities
 
 | Tool / Library        | Purpose                            |
 |------------------------|------------------------------------|
