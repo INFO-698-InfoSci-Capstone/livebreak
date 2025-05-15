@@ -61,7 +61,7 @@ This project demonstrates a pipeline that converts news articles or any web cont
 
 ## Project Structure
 
-`SadTalker/ ├── examples/ │ ├── source_image/ │ ├── driven_audio/ │ └── results/ ├── inference.py ├── scripts/ ├── download_models.sh ├── requirements.txt ...`
+SadTalker/ ├── examples/ │ ├── source_image/ │ ├── driven_audio/ │ └── results/ ├── inference.py ├── scripts/ ├── download_models.sh ├── requirements.txt
 
 ## Credits
 
