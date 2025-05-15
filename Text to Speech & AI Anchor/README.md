@@ -52,7 +52,6 @@ This project demonstrates a pipeline that converts news articles or any web cont
 # Step 3: Save audio file as news_audio.wav
 # Step 4: Copy image and audio into SadTalker inputs
 # Step 5: Run SadTalker inference
-!python inference.py --driven_audio ./examples/driven_audio/news_audio.wav                      --source_image ./examples/source_image/myface.png                      --result_dir ./results                      --still --preprocess full --enhancer gfpgan
 ```
 
 ## Output
@@ -62,16 +61,7 @@ This project demonstrates a pipeline that converts news articles or any web cont
 
 ## Project Structure
 
-SadTalker/
-├── examples/
-│ ├── source_image/
-│ └── driven_audio/
-├── results/
-├── inference.py
-├── scripts/
-│ └── download_models.sh
-├── requirements.txt
-└── ...
+`SadTalker/ ├── examples/ │ ├── source_image/ │ ├── driven_audio/ │ └── results/ ├── inference.py ├── scripts/ ├── download_models.sh ├── requirements.txt ...`
 
 ## Credits
 
