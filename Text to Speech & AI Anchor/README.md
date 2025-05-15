@@ -59,10 +59,6 @@ This project demonstrates a pipeline that converts news articles or any web cont
 - The final video is saved in the `./results/` folder.
 - It features your input face image animated with lip-sync and head motion driven by the input speech.
 
-## Project Structure
-
-SadTalker/ ├── examples/ │ ├── source_image/ │ ├── driven_audio/ │ └── results/ ├── inference.py ├── scripts/ ├── download_models.sh ├── requirements.txt
-
 ## Credits
 
 - [SadTalker](https://github.com/Winfredy/SadTalker) – for real-time talking-head generation
