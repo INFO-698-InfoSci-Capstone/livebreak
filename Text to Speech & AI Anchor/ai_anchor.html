@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LiveBreak AI Anchor</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+
+    header.navbar {
+      background: #0094ff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-img {
+      height: 40px;
+    }
+
+    .search-box {
+      padding: 6px 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 14px;
+    }
+
+    .navbar-center {
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .navbar-right {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .navbar-right a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .city-select {
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    .city-select select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    .feed {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 15px;
+    }
+
+    .article {
+      display: flex;
+      justify-content: space-between;
+      background: white;
+      margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .article-content {
+      flex: 1;
+      padding-right: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-content img {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .article-title a {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a2e;
+      text-decoration: none;
+    }
+
+    .article-title a:hover {
+      text-decoration: underline;
+    }
+
+    .article-description {
+      font-size: 15px;
+      color: #333;
+      margin: 12px 0;
+      line-height: 1.6;
+    }
+
+    .source-button {
+      width: fit-content;
+      padding: 6px 12px;
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .source-button:hover {
+      background-color: #0c59c3;
+    }
+
+    .article-video {
+      width: 360px;
+      height: 410px;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: black;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-left">
+      <img src="https://livebreak.co/assets/icon/logo.png" alt="LiveBreak Logo" class="logo-img" />
+      <input class="search-box" type="text" placeholder="Search" />
+    </div>
+    <div class="navbar-center">AI Anchor</div>
+    <div class="navbar-right">
+      <a href="https://livebreak.co">Home</a>
+      <a href="https://livebreak.co">Feed</a>
+      <a href="https://livebreak.co">AI Anchor</a>
+    </div>
+  </header>
+
+  <div class="city-select">
+    <label for="city">Select City: </label>
+    <select id="city">
+      <option value="tucson">Tucson</option>
+      <option value="phoenix">Phoenix</option>
+    </select>
+  </div>
+
+  <div class="feed" id="feed"></div>
+
+  <script>
+    const articles = [
+      {
+        title: "Longer paid parking hours coming to most downtown Tucson districts this summer",
+        description: "Tucson is extending parking meter hours in the city’s Downtown, Mercado, Main Gate and University districts starting June 2 — but Fourth Avenue is exempt for now. Paid parking will now be required Monday through Saturday from 8 a.m. to 7 p.m. The department of transportation is tacking on two extra hours of paid parking on weekday evenings with enforcement ending at 7 p.m. rather than 5 p.m. It also makes payment mandatory on Saturdays, a day on which parking is currently free.",
+        image: "https://i0.wp.com/azluminaria.org/wp-content/uploads/2022/11/DSF0210-scaled.jpeg?fit=1024%2C683&ssl=1",
+        video: "https://images.meebuddy.com/robo_anchor/v1.mp4",
+        article: "https://livebreak.co/post/681516346cd73efea492705e",
+        source: "https://azluminaria.org/2025/05/02/longer-paid-parking-hours-coming-to-most-downtown-tucson-districts-this-summer/"
+      },
+      {
+        title: "New UA student coalition fights to save diversity programs",
+        description: "This article was originally published by Arizona Sonoran News, a news service of the University of Arizona School of Journalism. A new collective organized by student staff at the University of Arizona Thrive Center is advocating for programs focused on inclusion and diversity under threat in the current political climate.",
+        image: "https://i0.wp.com/azluminaria.org/wp-content/uploads/2024/05/DSCF4028.jpg?fit=1024%2C654&ssl=1",
+        video: "https://images.meebuddy.com/robo_anchor/v2.mp4",
+        article: "https://livebreak.co/post/6813f13d6cd73efea48b66b7",
+        source: "https://azluminaria.org/2025/05/01/new-ua-student-coalition-fights-to-save-diversity-programs/"
+      },
+      {
+        title: "Arizona men’s basketball reloads roster for 2025–2026 Season",
+        description: "With a combination of top high school talent and a key transfer addition, UA men’s basketball head coach Tommy Lloyd has put together one of the nation’s most competitive recruiting groups.",
+        image: "https://wildcat.arizona.edu/wp-content/uploads/2023/12/Arizona-Basketball-vs-Wisconsin-1-1200x800.jpeg",
+        video: "https://images.meebuddy.com/robo_anchor/v3.mp4",
+        article: "https://wildcat.arizona.edu/160697/sports/arizona-mens-basketball-reloads-roster-for-2025-26-season/",
+        source: "https://wildcat.arizona.edu/160697/sports/arizona-mens-basketball-reloads-roster-for-2025-26-season/"
+      },
+      {
+        title: "UA Scientists Launch Balloon",
+        description: "A measure to establish a new missing person alert system in Arizona was amended Wednesday to include minors, addressing a previous gap in the bill’s language that excluded Indigenous teen Emily Pike.",
+        image: "https://i0.wp.com/azluminaria.org/wp-content/uploads/2025/05/womensmarch-4-copy.jpg?fit=1024%2C640&ssl=1",
+        video: "https://images.meebuddy.com/robo_anchor/v4.mp4",
+        article: "https://livebreak.co/post/6813ec8c6cd73efea48b4aa6",
+        source: "https://azluminaria.org/2025/05/01/arizonas-missing-person-alert-bill-amended-to-address-exclusion-of-emily-pikes-case/"
+      },
+      {
+        title: "How a local program aims to grow Southern Arizona students into environmental leaders",
+        description: "Mia Nicole Leon joined Youth for Blue Skies in Nogales to understand air quality impacts. The program empowered her with a broader view of environmental challenges and change.",
+        image: "https://i0.wp.com/azluminaria.org/wp-content/uploads/2025/04/IMG_1119-scaled.jpg?fit=1024%2C768&ssl=1",
+        video: "https://images.meebuddy.com/robo_anchor/v5.mp4",
+        article: "https://livebreak.co/post/680a625b6382f0089dd35903",
+        source: "https://azluminaria.org/2025/04/24/how-a-local-program-aims-to-grow-southern-arizona-students-into-environmental-leaders/"
+      }
+    ];
+
+    const feed = document.getElementById("feed");
+
+    articles.forEach(article => {
+      const container = document.createElement("div");
+      container.className = "article";
+
+      container.innerHTML = `
+        <div class="article-content">
+          <img src="${article.image}" alt="News Image">
+          <div class="article-title"><a href="${article.article}" target="_blank">${article.title}</a></div>
+          <div class="article-description">${article.description}</div>
+          <a class="source-button" href="${article.source}" target="_blank">Source</a>
+        </div>
+        <div class="article-video">
+          <video playsinline preload="metadata" controls>
+            <source src="${article.video}" type="video/mp4">
+          </video>
+        </div>
+      `;
+
+      feed.appendChild(container);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      const visibleVideos = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+      document.querySelectorAll("video").forEach(video => video.pause());
+
+      if (visibleVideos.length > 0) {
+        visibleVideos[0].target.play();
+      }
+    }, { threshold: 0.6 });
+
+    document.querySelectorAll("video").forEach(video => {
+      video.pause();
+      observer.observe(video);
+    });
+  </script>
+
+</body>
+</html>
