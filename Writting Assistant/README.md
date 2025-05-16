@@ -90,7 +90,7 @@ OPENAI_API_KEY=your_openai_key_here
 ### 3. ▶️ Run the FastAPI Server
 
 ```bash
-uvicorn main:app --reload --port 8000
+uvicorn openai:app --reload --port 8000
 ```
 
 - Access Swagger UI: `http://localhost:8000/docs`
@@ -119,17 +119,7 @@ OLLAMA_MODEL=mistral
 
 ---
 
-## 📂 Project Structure
 
-```
-.
-├── main.py               # FastAPI entry point
-├── openai.py             # Logic using OpenAI API
-├── ollama.py             # Logic using local Mistral model
-├── utils.py              # Helper methods
-├── requirements.txt
-└── .env
-```
 
 ---
 
@@ -153,13 +143,3 @@ curl -X POST http://localhost:8000/generate_description \
 
 ---
 
-## 👥 Contributing
-
-We welcome contributions from the community!  
-Feel free to open an issue or submit a pull request.
-
----
-
-## 📄 License
-
-MIT License — Free to use, modify, and distribute.
